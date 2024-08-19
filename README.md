@@ -26,4 +26,5 @@ VM2: ./vm2.sh
 6. Once done, please run the following command: sudo python3 app.py
 7. Both regions should be connected to each other using VNet-VNet Peering.
 8. Finally, your Traffic Manager should be pointing to the application gateway
-    
+
+# the whole deployment is documented along with screenshots in a pdf file named "Azure Administrator Capstone Project AZ."
