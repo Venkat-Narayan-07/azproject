@@ -1,30 +1,49 @@
-# Capstone Project AZ
-You work as an Azure professional for a Corporation. You are assigned the task of implementing the below architecture for the company’s website.
+# Azure Website Deployment with High Availability
+**Project Overview**
+This repository showcases my ability to design and implement a highly available website architecture for a corporation using Azure services. The architecture utilizes Traffic Manager, Application Gateway, Azure VMs, Azure Blob Storage, and Azure Container Instances for optimal traffic distribution, page serving, and error handling.
 
-![image](https://github.com/user-attachments/assets/83cdccd4-f124-479b-be12-8449b8794fd2)
+**Project Goals**
+* Deploy a website with three web pages: home page, upload page, and error page.
+* Implement high availability by distributing traffic across two regions (Central US and West US).
+* Utilize Application Gateway for routing requests to specific pages based on URL paths.
+* Configure error handling for 403 and 502 errors with a custom error page hosted on Azure Blob Storage.
+* Ensure secure communication within the virtual networks through VNet Peering.
 
-There are three web pages to be deployed:
-1. The home page is the default page (VM2)
-2. The upload page is where you can upload the files to your Azure Blob Storage (VM1)
-3. The error page for 403 and 502 errors Application Gateway has to be configured in the following manner:
-1.
-Example.com should be pointed to the home page
-2.
-Example.com/upload should be pointed to the upload page
-3.
-Application Gateway’s error pages should be pointed to error.html which should be hosted as a static website in Azure Containers. The error.html file is present in the GitHub repository
-The term ‘Example’ here refers to the Traffic Manager’s domain name. The client wants you to deploy them in the Central US and the West US regions such that the traffic is distributed optimally between both regions. Storage Account has to be configured in the following manner:
-1. You need to host your error.html as a static website here, and then point the application gateway’s 403 and 502 errors to it.
-2. Create a container named upload, this will be used by your code to upload the files. Technical specifications for the deployments are as follows:
-1. Deployments in both regions should have VMs inside VNets.
-2. Clone the GitHub repo https://github.com/azcloudberg/azproject to all the VMs.
-3. On VM1, please run vm1.sh this will deploy the upload page, on VM2 please run VM2.sh, this will install the home page.
-4. For running the scripts, please run the following command inside the GitHub directory from the terminal.
-VM1: ./vm1.sh
-VM2: ./vm2.sh
-5. After running the scripts, please edit the config.py file on VM1, and enter the details related to your storage account where the files will be uploaded.
-6. Once done, please run the following command: sudo python3 app.py
-7. Both regions should be connected to each other using VNet-VNet Peering.
-8. Finally, your Traffic Manager should be pointing to the application gateway
+**Technical Implementation**
+* Traffic Manager: Routes incoming traffic to the Application Gateway in the optimal region based on defined policies.
+* Application Gateway: Acts as a reverse proxy, directing requests to the appropriate web page based on URL paths.
+* Azure VMs:
+  - Two VMs deployed, one in each region (Central US and West US).
+  - Each VM resides within a dedicated Virtual Network (VNet).
+  - VMs host the application code (cloned from GitHub) and execute deployment scripts.
+* Azure Blob Storage:
+  - Stores the custom error page (error.html).
+  - Configured as a static website to serve the error page for 403 and 502 errors.
+  - Azure Container Instances: (Optional) Can be used to host the upload page in a containerized environment (not implemented in this initial version).
+* VNet Peering: Enables secure communication between the VMs in different regions.
 
-# the whole deployment is documented along with screenshots in a pdf file named "Azure Administrator Capstone Project AZ."
+**Key Technologies Used**
+* Azure Traffic Manager
+* Azure Application Gateway
+* Azure Virtual Machines
+* Azure Virtual Network
+* Azure Blob Storage
+
+**Skills Demonstrated**
+* Azure Resource Management
+* High Availability Architecture Design
+* Traffic Management Configuration
+* Application Gateway Routing
+* Azure VM Deployment and Management
+* Azure Blob Storage Configuration
+* VNet Peering
+
+**Project Outcome**
+A highly available website architecture ensures minimal downtime and optimal performance.
+Traffic distribution between regions improves scalability and responsiveness.
+Customized error handling provides a more user-friendly experience.
+Further Resources
+# - 
+**Documentation**: A detailed PDF document "Azure Administrator Capstone Project AZ" outlines the complete deployment process with screenshots. 
+# -
+By showcasing this project, I aim to demonstrate my proficiency in designing and implementing robust Azure solutions for high availability and efficient website deployments.
